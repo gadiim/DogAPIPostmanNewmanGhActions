@@ -1,0 +1,23 @@
+{
+  "name": "dogapipostmannewmanghactions",
+  "version": "1.0.0",
+  "description": "Automated testing for Pet API using Postman and Newman.",
+  "main": "index.js",
+  "scripts": {
+    "test": "newman run PetAPI.postman_collection.json",
+    "test:report": "newman run PetAPI.postman_collection.json -r htmlextra"
+  },
+  "keywords": [
+    "Postman",
+    "Newman",
+    "API testing",
+    "automation",
+    "Pet API"
+  ],
+  "author": "gadiim",
+  "license": "ISC",
+  "dependencies": {
+    "newman": "^6.2.1",
+    "newman-reporter-htmlextra": "^1.22.6"
+  }
+}

@@ -1,0 +1,142 @@
+{
+	"info": {
+		"_postman_id": "3bfcd031-9e1e-461b-bbe3-863536e8a5b6",
+		"name": "PetAPI",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "39117580"
+	},
+	"item": [
+		{
+			"name": "Test Breeds",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Create a list of dog breeds from the API response\r",
+							"const breedsList = [];\r",
+							"const jsonData = pm.response.json();\r",
+							"const breeds = jsonData.message;\r",
+							"\r",
+							"for (const breed in breeds) {\r",
+							"    if (breeds[breed].length > 0) {\r",
+							"        for (const subBreed of breeds[breed]) {\r",
+							"            breedsList.push(`${breed} ${subBreed}`);\r",
+							"        }\r",
+							"    } else {\r",
+							"        breedsList.push(breed);\r",
+							"    }\r",
+							"}\r",
+							"\r",
+							"// Log the list of breeds to the console for review\r",
+							"pm.test(\"Breeds List\", function () {\r",
+							"    console.log(\"Breeds List:\", breedsList);\r",
+							"});\r",
+							"\r",
+							"// Verify response status code is 200\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"// Verify response schema matches expectations\r",
+							"const schema = {\r",
+							"    \"type\": \"object\",\r",
+							"    \"properties\": {\r",
+							"        \"message\": {\r",
+							"            \"type\": \"object\",\r",
+							"            \"additionalProperties\": {\r",
+							"                \"type\": \"array\",\r",
+							"                \"items\": {\r",
+							"                    \"type\": \"string\"\r",
+							"                }\r",
+							"            }\r",
+							"        },\r",
+							"        \"status\": { \"type\": \"string\" }\r",
+							"    },\r",
+							"    \"required\": [\"message\", \"status\"]\r",
+							"};\r",
+							"pm.test(\"Schema is valid\", function () {\r",
+							"    pm.response.to.have.jsonSchema(schema);\r",
+							"});\r",
+							"\r",
+							"// 1 data validation test\r",
+							"// Verify that the breeds list is not empty\r",
+							"pm.test(\"Breeds list is not empty\", function () {\r",
+							"    const jsonData = pm.response.json();\r",
+							"    pm.expect(Object.keys(jsonData.message)).to.not.be.empty;\r",
+							"});\r",
+							"\r",
+							"// 2 data validation test\r",
+							"// Verify that the response status is \"success\"\r",
+							"pm.test(\"Status is success\", function () {\r",
+							"    const jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.status).to.eql(\"success\");\r",
+							"});\r",
+							"\r",
+							"\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}{{endpoint}}",
+					"host": [
+						"{{baseURL}}{{endpoint}}"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseURL",
+			"value": "https://dog.ceo/api",
+			"type": "string"
+		},
+		{
+			"key": "endpoint",
+			"value": "/breeds/list/all",
+			"type": "string"
+		}
+	]
+}
