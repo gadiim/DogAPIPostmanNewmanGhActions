@@ -3,10 +3,10 @@
   "version": "1.0.0",
   "description": "Automated testing for Pet API using Postman and Newman.",
   "main": "index.js",
-  "scripts": {
-    "test": "newman run PetAPI.postman_collection.json -r htmlextra --reporter-htmlextra-export testResults/PetAPI-$(date +%Y-%m-%d-%H-%M-%S).html",
-    "test:report": "newman run PetAPI.postman_collection.json -r htmlextra --reporter-htmlextra-export testResults/PetAPI-$(date +%Y-%m-%d-%H-%M-%S).html"
-  },
+"scripts": {
+  "test": "newman run PetAPI.postman_collection.json -r htmlextra --reporter-htmlextra-export newman/newman-run-report.html",
+  "test:report": "newman run PetAPI.postman_collection.json -r htmlextra --reporter-htmlextra-export newman/newman-run-report.html"
+},
   "keywords": [
     "Postman",
     "Newman",
