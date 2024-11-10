@@ -36,4 +36,4 @@ dogapipostmannewmanghactions/
 
 Newman is used for generating detailed test reports, providing insights into test results, and making it easier to understand the test execution and outcomes.
 
-<img src=".images/newman_report_overview.jpg" width="400"/>
+<img src=".images/newman_report_overview.jpg"/>
