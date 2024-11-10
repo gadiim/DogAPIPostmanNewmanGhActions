@@ -21,25 +21,14 @@ jobs:
         with:
           node-version: '20'
 
-      - name: Install newman
-        run: |
-            npm install -g newman
-            npm install -g newman-reporter-htmlextra
+      - name: Install dependencies
+        run: npm install
 
-      - name: Make Directory for results
-        run: mkdir -p testResults
+      - name: Run tests
+        run: npm run test:report
 
-      - name: Run POSTMAN collection
-        run: |
-          newman run PetAPI.postman_collection.json -r htmlextra --reporter-htmlextra-export testResults/htmlreport.html --reporter-htmlextra-darkTheme  > testResults/runreport1.html
-
-
-
-
-
-      - name: Output the run Details
+      - name: Upload HTML report
         uses: actions/upload-artifact@v4
         with:
-          name: RunReports
-          path: testResults 
-
+          name: newman-report
+          path: newman/*.html
