@@ -2,7 +2,6 @@
   "name": "dogapipostmannewmanghactions",
   "version": "1.0.0",
   "description": "Automated testing for Pet API using Postman and Newman.",
-  
 "scripts": {
   "test": "newman run PetAPI.postman_collection.json -r htmlextra --reporter-htmlextra-export newman/newman-run-report.html",
   "test:report": "newman run PetAPI.postman_collection.json -r htmlextra --reporter-htmlextra-export newman/newman-run-report.html && npx open-cli newman/newman-run-report.html"
