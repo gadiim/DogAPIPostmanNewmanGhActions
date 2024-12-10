@@ -38,4 +38,4 @@ jobs:
         if: always()
         with:
           branch: gh-pages
-          folder: newman/*.html 
+          folder: newman
