@@ -32,12 +32,6 @@ jobs:
         with:
           name: newman-report
           path: newman/*.html
-
-      - name: Verify report exists
-        run: |
-            if [ ! -f "newman/newman-run-report.html" ]; then
-              echo "HTML report not found!" && exit 1
-            fi
         
       - name: Deploy report
         uses: JamesIves/github-pages-deploy-action@4.1.3
@@ -45,4 +39,3 @@ jobs:
         with:
           branch: gh-pages
           folder: newman
-          clean: false

@@ -1,3 +1,5 @@
+![CI](https://github.com/gadiim/DogAPIPostmanNewmanGhActions/actions/workflows/ci.yml/badge.svg)
+
 ## Pet API Test
 
 **Objective:**  
