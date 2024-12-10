@@ -3,10 +3,10 @@ name: Test-Build
 on:
   push:
     branches:
-      [main]
+      [ main ]
   pull_request:
     branches:
-      [main]
+      [ main ]
 
 jobs:
   test:
@@ -27,22 +27,10 @@ jobs:
       - name: Run tests
         run: npm run test
 
-      - name: Verify report exists
+      - name: Deploy to GitHub Pages
         run: |
-          if [ ! -f "newman/newman-run-report.html" ]; then
-            echo "HTML report not found!" && exit 1
-          fi
-
-      - name: Upload HTML report
-        uses: actions/upload-artifact@v4
-        with:
-          name: newman-report
-          path: newman/newman-run-report.html
-
-      - name: Deploy report
-        uses: JamesIves/github-pages-deploy-action@4.1.3
-        if: always()
-        with:
-          branch: gh-pages
-          folder: ${{ github.workspace }}/newman
-          clean: false
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add newman
+          git commit -m "Deploy report"
+          git push origin `git subtree split --prefix newman main`:gh-pages --force
