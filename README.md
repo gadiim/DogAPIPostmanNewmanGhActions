@@ -37,3 +37,7 @@ dogapipostmannewmanghactions/
 Newman is used for generating detailed test reports, providing insights into test results, and making it easier to understand the test execution and outcomes.
 
 <img src=".images/newman_report_overview.jpg"/>
+
+**License:**
+
+This project is licensed under the MIT License. You are free to use, modify, and distribute this project. See the [LICENSE](./LICENSE.txt) file for more details.

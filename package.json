@@ -5,7 +5,7 @@
   "main": "index.js",
 "scripts": {
   "test": "newman run PetAPI.postman_collection.json -r htmlextra --reporter-htmlextra-export newman/newman-run-report.html",
-  "test:report": "newman run PetAPI.postman_collection.json -r htmlextra --reporter-htmlextra-export newman/newman-run-report.html"
+  "test:report": "newman run PetAPI.postman_collection.json -r htmlextra --reporter-htmlextra-export newman/newman-run-report.html && npx open-cli newman/newman-run-report.html"
 },
   "keywords": [
     "Postman",
@@ -15,9 +15,12 @@
     "Pet API"
   ],
   "author": "gadiim",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "newman": "^6.2.1",
     "newman-reporter-htmlextra": "^1.22.6"
+  },
+  "devDependencies": {
+    "open-cli": "^8.0.0"
   }
 }
